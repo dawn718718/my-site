@@ -17,3 +17,18 @@ hola:
   label: Hola
   permalink: /hola
   description: Hola tag description
+
+okf:
+  label: OKF
+  permalink: /okf
+  description: Open Knowledge Format 관련 글
+
+open knowledge format:
+  label: Open Knowledge Format
+  permalink: /open-knowledge-format
+  description: Open Knowledge Format 관련 글
+
+documentation:
+  label: Documentation
+  permalink: /documentation
+  description: 문서화, 기술 문서 작성 관련 글
