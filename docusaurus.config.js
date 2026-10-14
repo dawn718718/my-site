@@ -32,12 +32,15 @@ const config = {
 
   onBrokenLinks: 'throw',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // Korean is served at the root (/my-site/), English under /my-site/en/.
+  // Translations live in i18n/<locale>/ (see `npm run write-translations`).
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ko',
+    locales: ['ko', 'en'],
+    localeConfigs: {
+      ko: {label: '한국어', htmlLang: 'ko-KR'},
+      en: {label: 'English', htmlLang: 'en-US'},
+    },
   },
 
   presets: [
@@ -80,8 +83,9 @@ const config = {
           src: 'img/logo.svg',
         },
         items: [
-          {to: '/', label: 'Blog', position: 'left', activeBaseRegex: '^/(?!about)'},
-          {to: '/about', label: 'About', position: 'left'},
+          {to: '/', label: '블로그', position: 'left', activeBaseRegex: '^(?!.*/about/?$)'},
+          {to: '/about', label: '소개', position: 'left'},
+          {type: 'localeDropdown', position: 'right'},
           {
             href: 'https://github.com/dawn718718/my-site',
             label: 'GitHub',

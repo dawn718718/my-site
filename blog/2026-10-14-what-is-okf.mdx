@@ -1,0 +1,45 @@
+---
+slug: 
+title: OKF (Open Knowledge Format) 을 간단히 알아보자
+authors: [Jen]
+tags: [hola, docusaurus]
+---
+
+# OKF
+
+사내 지식 사이트에 들어갈 컨텐츠를 완전히 새로운 포맷으로 만드는 프로젝트를 진행하고 있다. 
+기존에는 Confluence에 중구난방 정리되고 있었으나, Confluence는 누구나 쉽게 문서를 생성하고, 삭제하고, 수정하고, 공유할 수 있다는 큰 장점이자 단점으로 인해, 조금 더 폐쇄적인 그래서 정확성과 fresh함을 담보할 수 있는 사이트를 만들기에 이르렀다. 
+
+
+## OKF에 대해서 알아보자
+무슨 약자인가? Open Knowledge Format 
+누가 만들었나? Google 클라우드 부서(?)
+왜 만들었나? Google 팀의 [블로그](https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing?hl=en)에 의하면, "foundation models continue to improve, the lack of relevant context often limits what they can do" 하다고 생각했고, 이런 foundation model들이 코드를 작성하고, 문서를 요약하고, 데이터셋을 분석하는 건 잘하지만 정작 accurate하고 actionable한 결과를 생성하는 right information은 부재하다는걸 절감했다고 함. 
+
+## 그래서 OKF가 뭔가?
+Wiki 처럼 정보와 지식을 파일 형태로 모아놓은 '모음집'이라고 표현하면 어떨까 싶다. 다만, 기존에는 웹에 랜더링하고 휴먼 서치를 목적으로 만들었다면, 지금은 독자를 인간에 국한시키지 않고 AI도 읽을 수 있도록 (오히려 AI가 더 읽기 쉽게) 포맷을 간단히 정
+AI가 최적의 action과 답변을 찾게 구조화된 "지식 모음집"
+
+아직도 잘 모르겠다. OKF는 어떻게 생겨먹었나?
+
+## OKF에 대한 중요한 개념 몇 개는 알아야 이해가 더 쉽다.
+
+- Knowledge Bundle — A self-contained, hierarchical collection of knowledge documents. The unit of distribution.
+- Concept — A single unit of knowledge within a bundle. Represented as one markdown document. 
+- Concept ID — The path of the concept's file within the bundle, with the .md suffix removed. For example, tables/users.md has concept ID tables/users.
+- Frontmatter — YAML metadata block delimited by --- at the top of a markdown file.
+- Body — Everything in the file after the frontmatter.
+- Link — A standard markdown link from one concept to another, used to express relationships beyond the implicit parent/child hierarchy.
+- Citation — A link from a concept to an external source that supports a claim in the body.
+
+# OKF를 인간어로 다시 정리하자면
+우리가 (인간이건 휴먼이건) 문서 파일을 만들고 문서 갯수가 수십, 수백개가 넘어가면 이 문서를 모두 읽어볼 수 없다. 즉, 이 문서가 내가 가진 의문에 대한 답을 줄 수 있는지 아닌지 문서 제목만으로는 파악이 어렵다. 
+
+그래서 OKF에서는 문서 도입부에 이 문서는 어떤 정보를 담고 있는지 간단히 메타데이터를 기록한다. 예를 들면, 이 문서는 A라는 제품에 대한 문서이고, 제품의 설치 과정 중 초반 OS 설정 순서를 다룬다.
+
+이런 메타데이터 정보 (OKF에서는 frontmatter라고 함)는 AI가 문서들을 라우팅하며 답을 찾을 때, 이 문서를 읽을지 말지 판단하는 근거가 된다. 
+
+또한 문서 마다 Link를 설정해서, 동일한 키워드나 주제를 다루고 있다면 서로 연결 시킬 수도 있다. 
+
+정리하자면, OKF에서 각 markdown 문서는 Concept 이고, concept 파일 안에는 문서의 유형이나 내용을 요약한 frontmatter가 존재하며, 각 concept 문서는 서로 연결될 수 있다. 이러한 여러 concept문서가 모인 것을 knowledge bundle이라고 한다. 
+
