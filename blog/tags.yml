@@ -12,3 +12,13 @@ documentation:
   label: Documentation
   permalink: /documentation
   description: 문서화, 기술 문서 작성 관련 글
+
+ssot:
+  label: SSOT
+  permalink: /ssot
+  description: Single Source of Truth 관련 글
+
+ai:
+  label: AI
+  permalink: /ai
+  description: AI 활용 관련 글
